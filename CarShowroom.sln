@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShowroom.Android", "CarShowroom\CarShowroom.Android\CarShowroom.Android.csproj", "{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarShowroom", "CarShowroom\CarShowroom\CarShowroom.csproj", "{C62A356B-A2C5-4E00-B383-43823F909356}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42E985B-9EFB-4E91-A45E-C66D9419D8EC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C62A356B-A2C5-4E00-B383-43823F909356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62A356B-A2C5-4E00-B383-43823F909356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62A356B-A2C5-4E00-B383-43823F909356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62A356B-A2C5-4E00-B383-43823F909356}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2779E90B-9552-4649-BB7E-A9A91F91FED8}
+	EndGlobalSection
+EndGlobal
