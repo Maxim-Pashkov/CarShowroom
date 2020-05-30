@@ -37,6 +37,12 @@ namespace CarShowroom
 
             BindingContext = this;
             InitializeComponent();
+
+            MessagingCenter.Subscribe<Page>(this, "TestDriveSaved", (sender) =>
+            {
+                TestDrive = new TestDrive();
+                OnPropertyChanged("TestDrive");                
+            });
         }
 
         private void Button_Clicked(object sender, EventArgs e)

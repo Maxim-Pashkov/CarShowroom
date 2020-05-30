@@ -19,6 +19,14 @@ namespace CarShowroom
 
             Title = "Подтверждение записи на тест-драйв";
 
+            Button button = new Button
+            {
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Text = "Подтвердить",
+            };
+            button.Clicked += Button_Clicked;
+
             Content = new StackLayout {                
                 Children = {
                     new StackLayout
@@ -86,15 +94,16 @@ namespace CarShowroom
                             new Label {Text = TestDrive.DateTime.ToString("dd.MM.yyyy HH:mm")},
                         }
                     },
-                    new Button
-                    {
-                        VerticalOptions= LayoutOptions.EndAndExpand,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        Text="Подтвердить",                        
-                    }
-
+                    button,
                 }
 			};
 		}
-	}
+
+        async private void Button_Clicked(object sender, EventArgs e)
+        {            
+            await DisplayAlert("Уведомление", "Ваша запись оформлена!", "Ок");           
+            MessagingCenter.Send<Page>(this, "TestDriveSaved");
+            await Navigation.PopAsync();
+        }
+    }
 }
