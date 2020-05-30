@@ -12,7 +12,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
                             <Label Text="Салон" VerticalTextAlignment="Center"/>
-                            <Picker HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" > 
+                            <Picker HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" SelectedItem="{Binding TestDrive.Showroom}" > 
                                 <Picker.Items>
                                     <x:String>г. Астрахань, ул. Адмиралтейская 28</x:String>
                                     <x:String>г. Астрахань, ул. Адмирала Нахимова 55</x:String>
@@ -24,45 +24,73 @@
                     <ViewCell>
                         <StackLayout Padding="20, 10, 10, 10">
                             <Label Text="Автомобиль" VerticalTextAlignment="Center"/>
-                            <ListView HasUnevenRows="True" HeightRequest="150" RowHeight="50" >
-                                <ListView.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>ВАЗ 2107</x:String>
-                                        <x:String>LADA Granta</x:String>
-                                        <x:String>LADA X-Ray</x:String>
-                                    </x:Array>
-                                </ListView.ItemsSource>
+                            <ListView 
+                                HasUnevenRows="True" 
+                                SelectedItem="{Binding TestDrive.Car}"
+                                ItemsSource="{Binding Cars}" 
+                                RowHeight="{Binding ListViewRowHeight}" 
+                                HeightRequest="{Binding ListViewHeightRequest}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="{Binding PhotoSource}" HeightRequest="50" WidthRequest="90" Aspect="AspectFit"/>
+                                                <StackLayout>
+                                                    <Label TextColor="Accent" Text="{Binding MainInfo}"/>
+                                                    <Label TextColor="Gray" Text="{Binding PriceInfo}" />
+                                                </StackLayout>
+                                            </StackLayout>                                            
+                                        </ViewCell>                                        
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                             </ListView>
                         </StackLayout>                        
                     </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
-                            <Label Text="Дата" VerticalTextAlignment="Center"/>
-                            <DatePicker 
-                                HorizontalOptions="FillAndExpand" 
-                                VerticalOptions="CenterAndExpand" 
-                                MinimumDate="{x:Static sys:DateTime.Today}"/>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
+                        <Label Text="Дата" VerticalTextAlignment="Center"/>
+                        <DatePicker 
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="CenterAndExpand" 
+                            MinimumDate="{x:Static sys:DateTime.Today}"
+                            Date="{Binding TestDrive.Date}"
+                            />
                             
-                            <Label Text="Время" VerticalTextAlignment="Center" />
-                            <TimePicker 
-                                HorizontalOptions="FillAndExpand" 
-                                VerticalOptions="CenterAndExpand" 
-                                Time="12:00" />
-                        </StackLayout>
-                    </ViewCell>
+                        <Label Text="Время" VerticalTextAlignment="Center" />
+                        <TimePicker 
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="CenterAndExpand" 
+                            Time="{Binding TestDrive.Time}"/>
+                    </StackLayout>
+                </ViewCell>
                 </TableSection>
                 <TableSection Title="Персональные данные">
-                    <EntryCell Label="Имя" Placeholder="Введите имя" Keyboard="Chat" />
-                    <EntryCell Label="Фамилия" Placeholder="Введите фамилию" Keyboard="Chat" />
-                    <EntryCell Label="Отчество" Placeholder="Введите отчество" Keyboard="Chat"/>
+                    <EntryCell 
+                        Label="Имя" 
+                        Placeholder="Введите имя" 
+                        Keyboard="Chat" 
+                        Text="{Binding TestDrive.FirstName}"/>
+                    <EntryCell 
+                        Label="Фамилия" 
+                        Placeholder="Введите фамилию" 
+                        Keyboard="Chat" 
+                        Text="{Binding TestDrive.SecondName}" />
+                    <EntryCell 
+                        Label="Отчество" 
+                        Placeholder="Введите отчество" 
+                        Keyboard="Chat"
+                        Text="{Binding TestDrive.ThirdName}"
+                        />
                     <EntryCell 
                         Label="Номер телефона" 
                         Placeholder="Введите номер телефона" 
-                        Keyboard="Telephone"/>
+                        Keyboard="Telephone"
+                        Text="{Binding TestDrive.PhoneNumber}"/>
                     <EntryCell 
                         Label="Электронный адрес" 
                         Placeholder="Введите электронный адрес"
-                        Keyboard="Email" />
+                        Keyboard="Email"
+                        Text="{Binding TestDrive.Email}"/>
                     <SwitchCell Text="Согласен на обработку персональных данных"/>
                 </TableSection>
             </TableRoot>
@@ -70,6 +98,6 @@
         <Button 
             VerticalOptions="EndAndExpand" 
             Text="Записаться" 
-            HorizontalOptions="FillAndExpand" />
+            HorizontalOptions="FillAndExpand"/>
     </StackLayout>
 </ContentPage>
