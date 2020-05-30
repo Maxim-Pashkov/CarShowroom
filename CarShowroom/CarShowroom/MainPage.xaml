@@ -98,6 +98,7 @@
         <Button 
             VerticalOptions="EndAndExpand" 
             Text="Записаться" 
-            HorizontalOptions="FillAndExpand"/>
+            HorizontalOptions="FillAndExpand"
+            Clicked="Button_Clicked"/>
     </StackLayout>
 </ContentPage>
