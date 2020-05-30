@@ -2,13 +2,74 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CarShowroom"
-             x:Class="CarShowroom.MainPage">
-
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="CarShowroom.MainPage"             
+             Title="Запись на тест-драйв">
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <TableView Intent="Form" HasUnevenRows="True">
+            <TableRoot>
+                <TableSection Title="Cведения о записи">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
+                            <Label Text="Салон" VerticalTextAlignment="Center"/>
+                            <Picker HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" > 
+                                <Picker.Items>
+                                    <x:String>г. Астрахань, ул. Адмиралтейская 28</x:String>
+                                    <x:String>г. Астрахань, ул. Адмирала Нахимова 55</x:String>
+                                    <x:String>г. Астрахань, ул. Савушкина 3</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Padding="20, 10, 10, 10">
+                            <Label Text="Автомобиль" VerticalTextAlignment="Center"/>
+                            <ListView HasUnevenRows="True" HeightRequest="150" RowHeight="50" >
+                                <ListView.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>ВАЗ 2107</x:String>
+                                        <x:String>LADA Granta</x:String>
+                                        <x:String>LADA X-Ray</x:String>
+                                    </x:Array>
+                                </ListView.ItemsSource>
+                            </ListView>
+                        </StackLayout>                        
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
+                            <Label Text="Дата" VerticalTextAlignment="Center"/>
+                            <DatePicker 
+                                HorizontalOptions="FillAndExpand" 
+                                VerticalOptions="CenterAndExpand" 
+                                MinimumDate="{x:Static sys:DateTime.Today}"/>
+                            
+                            <Label Text="Время" VerticalTextAlignment="Center" />
+                            <TimePicker 
+                                HorizontalOptions="FillAndExpand" 
+                                VerticalOptions="CenterAndExpand" 
+                                Time="12:00" />
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Персональные данные">
+                    <EntryCell Label="Имя" Placeholder="Введите имя" Keyboard="Chat" />
+                    <EntryCell Label="Фамилия" Placeholder="Введите фамилию" Keyboard="Chat" />
+                    <EntryCell Label="Отчество" Placeholder="Введите отчество" Keyboard="Chat"/>
+                    <EntryCell 
+                        Label="Номер телефона" 
+                        Placeholder="Введите номер телефона" 
+                        Keyboard="Telephone"/>
+                    <EntryCell 
+                        Label="Электронный адрес" 
+                        Placeholder="Введите электронный адрес"
+                        Keyboard="Email" />
+                    <SwitchCell Text="Согласен на обработку персональных данных"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button 
+            VerticalOptions="EndAndExpand" 
+            Text="Записаться" 
+            HorizontalOptions="FillAndExpand" />
     </StackLayout>
-
 </ContentPage>
