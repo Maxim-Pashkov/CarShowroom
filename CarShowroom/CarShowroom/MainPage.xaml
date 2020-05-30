@@ -91,7 +91,7 @@
                         Placeholder="Введите электронный адрес"
                         Keyboard="Email"
                         Text="{Binding TestDrive.Email}"/>
-                    <SwitchCell Text="Согласен на обработку персональных данных" On="{Binding TestDrive.Accepted}"/>
+                    <SwitchCell x:Name="SwitchAccept" Text="Согласен на обработку персональных данных" On="{Binding TestDrive.Accepted}"/>
                 </TableSection>
             </TableRoot>
         </TableView>
@@ -99,6 +99,9 @@
             VerticalOptions="EndAndExpand" 
             Text="Записаться" 
             HorizontalOptions="FillAndExpand"
-            Clicked="Button_Clicked"/>
+            Clicked="Button_Clicked"
+            BindingContext="{x:Reference SwitchAccept}"
+            IsEnabled="{Binding On}"
+            />
     </StackLayout>
 </ContentPage>
