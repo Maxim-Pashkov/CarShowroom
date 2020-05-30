@@ -66,15 +66,15 @@
                 </TableSection>
                 <TableSection Title="Персональные данные">
                     <EntryCell 
-                        Label="Имя" 
-                        Placeholder="Введите имя" 
-                        Keyboard="Chat" 
-                        Text="{Binding TestDrive.FirstName}"/>
-                    <EntryCell 
                         Label="Фамилия" 
                         Placeholder="Введите фамилию" 
                         Keyboard="Chat" 
                         Text="{Binding TestDrive.SecondName}" />
+                    <EntryCell 
+                        Label="Имя" 
+                        Placeholder="Введите имя" 
+                        Keyboard="Chat" 
+                        Text="{Binding TestDrive.FirstName}"/>                    
                     <EntryCell 
                         Label="Отчество" 
                         Placeholder="Введите отчество" 

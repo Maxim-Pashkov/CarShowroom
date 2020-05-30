@@ -11,7 +11,7 @@ namespace CarShowroom
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
 
-        public string FullName { get => string.Join(" ", new List<string> { FirstName, SecondName, ThirdName }).Trim(); }
+        public string FullName { get => string.Join(" ", new List<string> { SecondName, FirstName, ThirdName }).Trim(); }
 
         public string PhoneNumber { get; set; }
 
