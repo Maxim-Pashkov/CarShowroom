@@ -23,17 +23,7 @@ namespace CarShowroom
         {              
             TestDrive = new TestDrive();
 
-            Cars = new ObservableCollection<Car>
-            {
-                new Car { Brand = "ВАЗ", Model = "2107", Year = 2003, HorsePower = 72, Price = 80000, Photo = "vaz2107.jpg" },
-                new Car { Brand = "LADA", Model = "Granta", Year = 2015, HorsePower = 105, Price = 350000, Photo = "Granta.png" },
-                new Car { Brand = "LADA", Model = "XRAY", Year = 2018, HorsePower = 108, Price = 800000, Photo = "xray.png" },
-                new Car { Brand = "Daewoo", Model = "Nexia", Year = 2010, HorsePower = 80, Price = 320000, Photo = "daewoo_nexia.jpg" },
-                new Car { Brand = "Daewoo", Model = "Matiz", Year = 2008, HorsePower = 70, Price = 200000, Photo = "daewoo-matiz.jpg" },
-            };
-
             ListViewRowHeight = 50;
-            ListViewHeightRequest = Cars.Count * ListViewRowHeight;
 
             BindingContext = this;
             InitializeComponent();
@@ -43,6 +33,17 @@ namespace CarShowroom
                 TestDrive = new TestDrive();
                 OnPropertyChanged("TestDrive");                
             });
+        }
+
+        protected override void OnAppearing()
+        {
+            Cars = new ObservableCollection<Car>(App.Database.GetCars());
+            OnPropertyChanged("Cars");
+            
+            ListViewHeightRequest = Cars.Count * ListViewRowHeight;
+            OnPropertyChanged("ListViewHeightRequest");
+
+            base.OnAppearing();
         }
 
         private void Button_Clicked(object sender, EventArgs e)

@@ -29,7 +29,7 @@
                                 SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
                                 ItemsSource="{Binding Cars}" 
                                 RowHeight="{Binding ListViewRowHeight}" 
-                                HeightRequest="{Binding ListViewHeightRequest}">
+                                HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>

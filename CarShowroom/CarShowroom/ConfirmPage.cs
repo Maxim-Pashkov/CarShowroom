@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 using Xamarin.Forms;
 
@@ -100,7 +101,15 @@ namespace CarShowroom
 		}
 
         async private void Button_Clicked(object sender, EventArgs e)
-        {            
+        {
+            App.Database.SaveTestDrive(TestDrive);
+
+            int id = App.Database.GetLastInsertedId();
+
+            TestDrive td = App.Database.GetTestDrive(id);
+            System.Diagnostics.Debug
+                    .WriteLine("Test Drive ID: " + td.Id + " ; CarId: " + td.CarId + " ; FullName: " + td.FullName + " ;Phone:" + td.PhoneNumber + "; Email: " + td.Email + "; Showroom: " + td.Showroom);
+
             await DisplayAlert("Уведомление", "Ваша запись оформлена!", "Ок");           
             MessagingCenter.Send<Page>(this, "TestDriveSaved");
             await Navigation.PopAsync();
