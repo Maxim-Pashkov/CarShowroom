@@ -91,7 +91,7 @@
                         Placeholder="Введите электронный адрес"
                         Keyboard="Email"
                         Text="{Binding TestDrive.Email}"/>
-                    <SwitchCell Text="Согласен на обработку персональных данных"/>
+                    <SwitchCell Text="Согласен на обработку персональных данных" On="{Binding TestDrive.Aceepted}"/>
                 </TableSection>
             </TableRoot>
         </TableView>

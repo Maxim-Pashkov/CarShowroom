@@ -34,5 +34,7 @@ namespace CarShowroom
                 DateTime = new DateTime(Date.Year, Date.Month, Date.Day, value.Hours, value.Minutes, 0);
             }
         }
+
+        public bool Accepted { get; set; }
     }
 }
