@@ -10,6 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\daewoo-matiz.jpg" />
+    <None Remove="images\daewoo_nexia.jpg" />
+    <None Remove="images\Granta.png" />
+    <None Remove="images\vaz2107.jpg" />
+    <None Remove="images\xray.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="images\daewoo-matiz.jpg" />
+    <EmbeddedResource Include="images\daewoo_nexia.jpg" />
+    <EmbeddedResource Include="images\Granta.png" />
+    <EmbeddedResource Include="images\vaz2107.jpg" />
+    <EmbeddedResource Include="images\xray.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
 </Project>
