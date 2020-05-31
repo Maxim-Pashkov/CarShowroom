@@ -29,7 +29,9 @@
                                 SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
                                 ItemsSource="{Binding Cars}" 
                                 RowHeight="{Binding ListViewRowHeight}" 
-                                HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}">
+                                HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}"
+                                GroupDisplayBinding="{Binding Name}"
+                                IsGroupingEnabled="True">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
