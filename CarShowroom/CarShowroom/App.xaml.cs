@@ -37,7 +37,7 @@ namespace CarShowroom
                 Database.SaveCar(new Car { Brand = "Daewoo", Model = "Matiz", Year = 2008, HorsePower = 70, Price = 200000, Photo = "daewoo-matiz.jpg" });
             }
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new TabbedMainPage());
         }
 
         protected override void OnStart()
