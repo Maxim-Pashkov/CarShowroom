@@ -25,6 +25,19 @@ namespace CarShowroom
                 TestDrive = new TestDrive();
                 OnPropertyChanged("TestDrive");                
             });
+
+            MessagingCenter.Subscribe<Car>(this, "SelectCarFromList", (Car) =>
+            {
+                TabbedPage tb = (TabbedPage)Parent;
+                tb.CurrentPage = tb.Children.First(page => page == this);
+
+                if(ListView.ItemsSource != null)
+                {
+                    IEnumerable<Grouping<string, Car>> CarsInList = ListView.ItemsSource.Cast<Grouping<string, Car>>();
+                    Car selectedCar = CarsInList.SelectMany(g => g.ToList()).FirstOrDefault(c => c.Id == Car.Id);
+                    ListView.SelectedItem = selectedCar;
+                }                
+            });
         }
 
         protected override void OnAppearing()

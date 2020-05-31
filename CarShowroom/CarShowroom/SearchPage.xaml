@@ -9,7 +9,7 @@
     </ContentPage.Resources>
     <StackLayout>
         <local:SearchView StyleClass="container" Search="SearchView_Search"/>
-        <ListView x:Name="ListView" HasUnevenRows="True">
+        <ListView x:Name="ListView" HasUnevenRows="True" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -30,5 +30,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Записаться на тест-драйв" IsEnabled="{Binding CarIsSelected}" Clicked="Button_Clicked"/>
     </StackLayout>
 </ContentPage>
