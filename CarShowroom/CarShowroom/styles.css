@@ -1,0 +1,34 @@
+﻿.container {
+	margin: 10 10 10 20;
+}
+
+.container-narrow {
+	margin: 0 10 0 20;
+}
+
+.hr {
+	height: 1;
+	opacity: .3;
+	color: gray;
+}
+
+label.container {
+	color: accent;
+	font-style: bold;
+}
+
+label.container + .hr{
+	color: accent;
+}
+
+button {
+	height: 50;
+}
+
+.label-big, .label-big + label {
+	font-size: medium;
+}
+
+.label-big {
+	font-style: bold;
+}

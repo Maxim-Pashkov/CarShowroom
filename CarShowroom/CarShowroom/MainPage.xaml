@@ -3,107 +3,125 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CarShowroom"
              xmlns:sys="clr-namespace:System;assembly=netstandard"
-             x:Class="CarShowroom.MainPage"             
+             x:Class="CarShowroom.MainPage"     
              Title="Запись на тест-драйв">
-    <StackLayout>
-        <TableView Intent="Form" HasUnevenRows="True">
-            <TableRoot>
-                <TableSection Title="Cведения о записи">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
-                            <Label Text="Салон" VerticalTextAlignment="Center"/>
-                            <Picker HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" SelectedItem="{Binding TestDrive.Showroom}" > 
-                                <Picker.Items>
-                                    <x:String>г. Астрахань, ул. Адмиралтейская 28</x:String>
-                                    <x:String>г. Астрахань, ул. Адмирала Нахимова 55</x:String>
-                                    <x:String>г. Астрахань, ул. Савушкина 3</x:String>
-                                </Picker.Items>
-                            </Picker>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Padding="20, 10, 10, 10">
-                            <Label Text="Автомобиль" VerticalTextAlignment="Center"/>
-                            <ListView 
-                                HasUnevenRows="True" 
-                                SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
-                                ItemsSource="{Binding Cars}" 
-                                RowHeight="{Binding ListViewRowHeight}" 
-                                HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}"
-                                GroupDisplayBinding="{Binding Name}"
-                                IsGroupingEnabled="True">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Image Source="{Binding PhotoSource}" HeightRequest="50" WidthRequest="90" Aspect="AspectFit"/>
-                                                <StackLayout>
-                                                    <Label TextColor="Accent" Text="{Binding MainInfo}"/>
-                                                    <Label TextColor="Gray" Text="{Binding PriceInfo}" />
-                                                </StackLayout>
-                                            </StackLayout>                                            
-                                        </ViewCell>                                        
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>                        
-                    </ViewCell>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal" Padding="20, 10, 10, 10">
-                        <Label Text="Дата" VerticalTextAlignment="Center"/>
-                        <DatePicker 
-                            HorizontalOptions="FillAndExpand" 
-                            VerticalOptions="CenterAndExpand" 
-                            MinimumDate="{x:Static sys:DateTime.Today}"
-                            Date="{Binding TestDrive.Date}"
-                            />
-                            
-                        <Label Text="Время" VerticalTextAlignment="Center" />
-                        <TimePicker 
-                            HorizontalOptions="FillAndExpand" 
-                            VerticalOptions="CenterAndExpand" 
-                            Time="{Binding TestDrive.Time}"/>
-                    </StackLayout>
-                </ViewCell>
-                </TableSection>
-                <TableSection Title="Персональные данные">
-                    <EntryCell 
-                        Label="Фамилия" 
-                        Placeholder="Введите фамилию" 
-                        Keyboard="Chat" 
-                        Text="{Binding TestDrive.SecondName}" />
-                    <EntryCell 
-                        Label="Имя" 
-                        Placeholder="Введите имя" 
-                        Keyboard="Chat" 
-                        Text="{Binding TestDrive.FirstName}"/>                    
-                    <EntryCell 
-                        Label="Отчество" 
-                        Placeholder="Введите отчество" 
-                        Keyboard="Chat"
-                        Text="{Binding TestDrive.ThirdName}"
-                        />
-                    <EntryCell 
-                        Label="Номер телефона" 
-                        Placeholder="Введите номер телефона" 
-                        Keyboard="Telephone"
-                        Text="{Binding TestDrive.PhoneNumber}"/>
-                    <EntryCell 
-                        Label="Электронный адрес" 
-                        Placeholder="Введите электронный адрес"
-                        Keyboard="Email"
-                        Text="{Binding TestDrive.Email}"/>
-                    <SwitchCell x:Name="SwitchAccept" Text="Согласен на обработку персональных данных" On="{Binding TestDrive.Accepted}"/>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-        <Button 
-            VerticalOptions="EndAndExpand" 
-            Text="Записаться" 
-            HorizontalOptions="FillAndExpand"
-            Clicked="Button_Clicked"
-            BindingContext="{x:Reference SwitchAccept}"
-            IsEnabled="{Binding On}"
+    <ContentPage.Resources>
+        <StyleSheet Source="/styles.css" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Сведения о записи" StyleClass="container"/>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>            
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Салон" VerticalTextAlignment="Center"/>
+                <Picker HorizontalOptions="FillAndExpand" VerticalOptions="Center" SelectedItem="{Binding TestDrive.Showroom}" >
+                    <Picker.Items>
+                        <x:String>г. Астрахань, ул. Адмиралтейская 28</x:String>
+                        <x:String>г. Астрахань, ул. Адмирала Нахимова 55</x:String>
+                        <x:String>г. Астрахань, ул. Савушкина 3</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout StyleClass="container">
+                <Label Text="Автомобиль"/>
+            </StackLayout>   
+            
+            <ListView 
+                    x:Name="ListView"
+                    HasUnevenRows="True" 
+                    SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
+                    ItemsSource="{Binding Cars}" 
+                    RowHeight="{Binding ListViewRowHeight}" 
+                    HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}"
+                    GroupDisplayBinding="{Binding Name}"
+                    IsGroupingEnabled="True">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HeightRequest="{Binding Source={x:Reference Name=ListView}, Path=RowHeight}" StyleClass="container-narrow" VerticalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" TextColor="Gray" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" StyleClass="container-narrow">
+                                    <Image 
+                                            Source="{Binding PhotoSource}" 
+                                            HeightRequest="{Binding Source={x:Reference Name=ListView}, Path=RowHeight}" 
+                                            WidthRequest="90" 
+                                            Aspect="AspectFit"/>
+                                    <StackLayout>
+                                        <Label TextColor="Accent" Text="{Binding MainInfo}"/>
+                                        <Label TextColor="Gray" Text="{Binding PriceInfo}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Дата" VerticalTextAlignment="Center"/>
+                <DatePicker 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    MinimumDate="{x:Static sys:DateTime.Today}"
+                    Date="{Binding TestDrive.Date}"
+                    />
+
+                <Label Text="Время" VerticalTextAlignment="Center" />
+                <TimePicker 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    Time="{Binding TestDrive.Time}"/>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <Label Text="Персональные данные" StyleClass="container"/>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Фамилия" VerticalTextAlignment="Center"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите фамилию" Text="{Binding TestDrive.SecondName}" Keyboard="Chat"/>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Имя" VerticalTextAlignment="Center"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите имя" Text="{Binding TestDrive.FirstName}" Keyboard="Chat"/>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Отчество" VerticalTextAlignment="Center"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите отчество" Text="{Binding TestDrive.ThirdName}" Keyboard="Chat"/>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <StackLayout Orientation="Horizontal" StyleClass="container">
+                <Label Text="Согласен на обработку персональных данных" VerticalTextAlignment="Center"/>
+                <Switch IsToggled="{Binding Accepted}" x:Name="SwitchAccept"/>
+            </StackLayout>
+            
+            <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
+            <Button 
+                VerticalOptions="EndAndExpand" 
+                Text="Записаться" 
+                HorizontalOptions="FillAndExpand"
+                Clicked="Button_Clicked"
+                BindingContext="{x:Reference SwitchAccept}"
+                IsEnabled="{Binding IsToggled}"
             />
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

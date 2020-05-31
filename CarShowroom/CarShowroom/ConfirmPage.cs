@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 
 using Xamarin.Forms;
+using Xamarin.Forms.StyleSheets;
 
 namespace CarShowroom
 {
@@ -28,77 +29,88 @@ namespace CarShowroom
             };
             button.Clicked += Button_Clicked;
 
+            List<string> containerStyle = new List<string> { "container" };
+            List<string> labelBigStyle = new List<string> { "label-big" };
+
             Content = new StackLayout {                
                 Children = {
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
+                        StyleClass= containerStyle,                        
                         Orientation = StackOrientation.Horizontal,
                         IsVisible = !string.IsNullOrEmpty(TestDrive.FullName),
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "ФИО:"},
-                            new Label {Text = TestDrive.FullName},
+                            new Label {StyleClass = labelBigStyle, Text = "ФИО:", VerticalTextAlignment = TextAlignment.Center},
+                            new Label {Text = TestDrive.FullName, VerticalTextAlignment = TextAlignment.Center},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand, IsVisible=!string.IsNullOrEmpty(TestDrive.FullName)},
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
+                        StyleClass= containerStyle,
                         Orientation = StackOrientation.Horizontal,
                         IsVisible = !string.IsNullOrEmpty(TestDrive.PhoneNumber),
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "Телефонный номер:"},
-                            new Label {Text = TestDrive.PhoneNumber},
+                            new Label {StyleClass = labelBigStyle, Text = "Телефонный номер:", VerticalTextAlignment = TextAlignment.Center},
+                            new Label {Text = TestDrive.PhoneNumber, VerticalTextAlignment= TextAlignment.Center},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand, IsVisible=!string.IsNullOrEmpty(TestDrive.PhoneNumber)},
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
+                        StyleClass= containerStyle,
                         Orientation = StackOrientation.Horizontal,
                         IsVisible = !string.IsNullOrEmpty(TestDrive.Email),
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "Электронный адрес:"},
-                            new Label {Text = TestDrive.Email},
+                            new Label {StyleClass = labelBigStyle, Text = "Электронный адрес:", VerticalTextAlignment = TextAlignment.Center},
+                            new Label {Text = TestDrive.Email, VerticalTextAlignment = TextAlignment.Center},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand, IsVisible=!string.IsNullOrEmpty(TestDrive.Email)},
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
-                        Orientation = StackOrientation.Horizontal,
+                        StyleClass= containerStyle,
                         IsVisible = !string.IsNullOrEmpty(TestDrive.Showroom),
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "Адрес салона:"},
+                            new Label {StyleClass = labelBigStyle, Text = "Адрес салона"},
                             new Label {Text = TestDrive.Showroom},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand, IsVisible=!string.IsNullOrEmpty(TestDrive.Showroom)},
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
+                        StyleClass= containerStyle,
                         Orientation = StackOrientation.Horizontal,
                         IsVisible = TestDrive.Car != null,
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "Автомобиль:"},
-                            new Label {Text = TestDrive.Car?.MainInfo ?? string.Empty},
+                            new Label {StyleClass = labelBigStyle, Text = "Автомобиль:", VerticalTextAlignment = TextAlignment.Center},
+                            new Label {Text = TestDrive.Car?.MainInfo ?? string.Empty, VerticalTextAlignment = TextAlignment.Center},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand, IsVisible=TestDrive.Car != null},
                     new StackLayout
                     {
-                        Padding = new Thickness(15, 10),
+                        StyleClass= containerStyle,
                         Orientation = StackOrientation.Horizontal,
                         Children =
                         {
-                            new Label {FontAttributes= FontAttributes.Bold, Text = "Дата:"},
-                            new Label {Text = TestDrive.DateTime.ToString("dd.MM.yyyy HH:mm")},
+                            new Label {StyleClass = labelBigStyle, Text = "Дата:", VerticalTextAlignment = TextAlignment.Center},
+                            new Label {Text = TestDrive.DateTime.ToString("dd.MM.yyyy HH:mm"), VerticalTextAlignment = TextAlignment.Center},
                         }
                     },
+                    new BoxView {StyleClass = new List<string> {"hr"}, HorizontalOptions=LayoutOptions.FillAndExpand},
                     button,
                 }
 			};
-		}
+
+            Resources.Add(StyleSheet.FromAssemblyResource(IntrospectionExtensions.GetTypeInfo(typeof(MainPage)).Assembly, "CarShowroom.styles.css"));
+
+        }
 
         async private void Button_Clicked(object sender, EventArgs e)
         {
