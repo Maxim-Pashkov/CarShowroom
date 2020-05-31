@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CarShowroom"
+             x:Class="CarShowroom.SearchPage"
+             Title="Поиск автомобилей">
+    <ContentPage.Resources>
+        <StyleSheet Source="/styles.css" />
+    </ContentPage.Resources>
+    <StackLayout>
+        <local:SearchView StyleClass="container" Search="SearchView_Search"/>
+        <ListView x:Name="ListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout StyleClass="container-narrow" Padding="0, 10">
+                                <Image
+                                    Source="{Binding PhotoSource}"   
+                                    HeightRequest="130"                                    
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="Center"/>
+                                <StackLayout>
+                                    <Label Text="{Binding MainInfo}" TextColor="Accent" FontSize="Medium" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding PriceInfo}" TextColor="Black" FontSize="Medium" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
