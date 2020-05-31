@@ -13,17 +13,9 @@ namespace CarShowroom
     {
         public TestDrive TestDrive { get; set; }
 
-        public ObservableCollection<Grouping<string,Car>> Cars { get; set; }
-
-        public int ListViewRowHeight { get; set; }
-
-        public int ListViewHeightRequest { get; set; }
-
         public MainPage()
         {              
             TestDrive = new TestDrive();
-
-            ListViewRowHeight = 50;
 
             BindingContext = this;
             InitializeComponent();
@@ -37,11 +29,13 @@ namespace CarShowroom
 
         protected override void OnAppearing()
         {
-            Cars = new ObservableCollection<Grouping<string, Car>>(App.Database.GetCars().GroupBy(Car => Car.Brand).Select(g => new Grouping<string, Car>(g.Key, g)));
-            OnPropertyChanged("Cars");
-            
-            ListViewHeightRequest = Cars.Sum(g => g.Count()) * ListViewRowHeight + Cars.Count() * ListViewRowHeight;
-            OnPropertyChanged("ListViewHeightRequest");
+            Car carSelected = (Car)ListView.SelectedItem;
+            List<Car> CarsList = App.Database.GetCars().ToList();
+            ObservableCollection<Grouping<string, Car>> Cars = new ObservableCollection<Grouping<string, Car>>(CarsList.GroupBy(Car => Car.Brand).Select(g => new Grouping<string, Car>(g.Key, g)));
+            ListView.ItemsSource = Cars;
+            ListView.SelectedItem = CarsList.FirstOrDefault(car => car.Id == carSelected?.Id);
+            ListView.RowHeight = 50;
+            ListView.HeightRequest = Cars.Sum(g => g.Count()) * ListView.RowHeight + Cars.Count() * ListView.RowHeight;
 
             base.OnAppearing();
         }

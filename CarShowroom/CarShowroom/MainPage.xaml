@@ -28,17 +28,14 @@
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout StyleClass="container">
                 <Label Text="Автомобиль"/>
-            </StackLayout>   
-            
+            </StackLayout>
+
             <ListView 
-                    x:Name="ListView"
-                    HasUnevenRows="True" 
-                    SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
-                    ItemsSource="{Binding Cars}" 
-                    RowHeight="{Binding ListViewRowHeight}" 
-                    HeightRequest="{Binding ListViewHeightRequest, Mode=TwoWay}"
-                    GroupDisplayBinding="{Binding Name}"
-                    IsGroupingEnabled="True">
+                x:Name="ListView"
+                HasUnevenRows="True" 
+                SelectedItem="{Binding TestDrive.Car, Mode=TwoWay}"
+                GroupDisplayBinding="{Binding Name}"
+                IsGroupingEnabled="True">
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
