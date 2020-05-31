@@ -7,6 +7,15 @@
              Title="Запись на тест-драйв">
     <ContentPage.Resources>
         <StyleSheet Source="/styles.css" />
+        <ResourceDictionary>
+            <Style x:Key="EntryFocused" TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="Entry.IsFocused" Value="True">
+                        <Setter Property="TextColor" Value="Accent"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
 
     <ScrollView>
@@ -48,19 +57,19 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal" StyleClass="container-narrow">
-                                    <Image 
-                                            Source="{Binding PhotoSource}" 
-                                            HeightRequest="{Binding Source={x:Reference Name=ListView}, Path=RowHeight}" 
-                                            WidthRequest="90" 
-                                            Aspect="AspectFit"/>
-                                    <StackLayout>
-                                        <Label TextColor="Accent" Text="{Binding MainInfo}"/>
-                                        <Label TextColor="Gray" Text="{Binding PriceInfo}" />
-                                    </StackLayout>
-                                </StackLayout>
+                          <StackLayout>
+                            <StackLayout Orientation="Horizontal" StyleClass="container-narrow">
+                              <Image
+                                      Source="{Binding PhotoSource}"
+                                      HeightRequest="{Binding Source={x:Reference Name=ListView}, Path=RowHeight}"
+                                      WidthRequest="90"
+                                      Aspect="AspectFit"/>
+                              <StackLayout>
+                                <Label TextColor="Accent" Text="{Binding MainInfo}"/>
+                                <Label TextColor="Gray" Text="{Binding PriceInfo}" />
+                              </StackLayout>
                             </StackLayout>
+                          </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -89,19 +98,19 @@
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Фамилия" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите фамилию" Text="{Binding TestDrive.SecondName}" Keyboard="Chat"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите фамилию" Text="{Binding TestDrive.SecondName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Имя" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите имя" Text="{Binding TestDrive.FirstName}" Keyboard="Chat"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите имя" Text="{Binding TestDrive.FirstName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Отчество" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите отчество" Text="{Binding TestDrive.ThirdName}" Keyboard="Chat"/>
+                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите отчество" Text="{Binding TestDrive.ThirdName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
