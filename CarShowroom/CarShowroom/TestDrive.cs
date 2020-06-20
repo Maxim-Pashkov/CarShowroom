@@ -8,6 +8,15 @@ namespace CarShowroom
 {
     public class TestDrive
     {
+        CarShowroomRepositoryInterface Database;
+
+        public TestDrive() : this(App.Database) { }
+
+        public TestDrive(CarShowroomRepositoryInterface database)
+        {
+            Database = database;
+        }
+
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
@@ -21,7 +30,7 @@ namespace CarShowroom
         public string ThirdName { get; set; }
 
         [Ignore]
-        public string FullName { get => string.Join(" ", new List<string> { SecondName, FirstName, ThirdName }).Trim(); }
+        public string FullName { get => string.Join(" ", new List<string> { SecondName, FirstName, ThirdName }).Trim().Replace("  ", " "); }
 
         [MaxLength(20)]
         public string PhoneNumber { get; set; }
@@ -33,7 +42,7 @@ namespace CarShowroom
 
         [Ignore]
         public Car Car {
-            get => CarId != 0 ? App.Database.GetCar(CarId) : null;
+            get => CarId != 0 ? Database.GetCar(CarId) : null;
             set => CarId = value != null ? value.Id : 0;
         }
 

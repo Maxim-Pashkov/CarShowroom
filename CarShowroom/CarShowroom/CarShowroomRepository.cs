@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarShowroom
 {
-    public class CarShowroomRepository
+    public class CarShowroomRepository : CarShowroomRepositoryInterface
     {
         SQLiteConnection database;
         public CarShowroomRepository(string databasePath)
