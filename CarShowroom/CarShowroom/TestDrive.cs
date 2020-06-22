@@ -8,6 +8,12 @@ namespace CarShowroom
 {
     public class TestDrive
     {
+        public TestDrive()
+        {
+            Date = DateTime.Today;
+            Time = new TimeSpan(12, 0, 0);
+        }
+
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
@@ -43,14 +49,14 @@ namespace CarShowroom
         public DateTime DateTime { get; set; }
 
         [Ignore]
-        public DateTime Date { get => DateTime.Equals(DateTime.MinValue) ? DateTime.Today : DateTime; set
+        public DateTime Date { get => DateTime.Date; set
             {
                 DateTime = new DateTime(value.Year, value.Month, value.Day, Time.Hours, Time.Minutes, 0);
             }
         }
 
         [Ignore]
-        public TimeSpan Time { get => DateTime.Equals(DateTime.MinValue) ? new TimeSpan(12, 0, 0) : DateTime.TimeOfDay; set
+        public TimeSpan Time { get => DateTime.TimeOfDay; set
             {
                 DateTime = new DateTime(Date.Year, Date.Month, Date.Day, value.Hours, value.Minutes, 0);
             }
