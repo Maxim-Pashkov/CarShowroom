@@ -15,6 +15,8 @@ namespace CarShowroom
         public TestDrive(CarShowroomRepositoryInterface database)
         {
             Database = database;
+            Date = DateTime.Today;
+            Time = new TimeSpan(12, 0, 0);
         }
 
         [PrimaryKey, AutoIncrement]
@@ -52,14 +54,14 @@ namespace CarShowroom
         public DateTime DateTime { get; set; }
 
         [Ignore]
-        public DateTime Date { get => DateTime.Equals(DateTime.MinValue) ? DateTime.Today : DateTime; set
+        public DateTime Date { get => DateTime.Date; set
             {
                 DateTime = new DateTime(value.Year, value.Month, value.Day, Time.Hours, Time.Minutes, 0);
             }
         }
 
         [Ignore]
-        public TimeSpan Time { get => DateTime.Equals(DateTime.MinValue) ? new TimeSpan(12, 0, 0) : DateTime.TimeOfDay; set
+        public TimeSpan Time { get => DateTime.TimeOfDay; set
             {
                 DateTime = new DateTime(Date.Year, Date.Month, Date.Day, value.Hours, value.Minutes, 0);
             }

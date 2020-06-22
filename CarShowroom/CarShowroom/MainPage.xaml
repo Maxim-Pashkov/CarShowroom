@@ -116,7 +116,7 @@
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Согласен на обработку персональных данных" VerticalTextAlignment="Center"/>
-                <Switch IsToggled="{Binding Accepted}" x:Name="SwitchAccept"/>
+                <Switch IsToggled="{Binding TestDrive.Accepted}" x:Name="SwitchAccept"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
