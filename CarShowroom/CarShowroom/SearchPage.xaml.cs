@@ -12,17 +12,19 @@ namespace CarShowroom
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SearchPage : ContentPage
 	{
+        private string lastSearched;
         public bool CarIsSelected { get; set; }
 
 		public SearchPage ()
-		{           
+		{
+            lastSearched = string.Empty;
             BindingContext = this;
-			InitializeComponent ();
+			InitializeComponent ();            
 		}
 
         protected override void OnAppearing()
         {
-            SearchView_Search(string.Empty);
+            SearchView_Search(lastSearched);
             
             base.OnAppearing();
         }
@@ -31,6 +33,7 @@ namespace CarShowroom
         {
             ListView.ItemsSource = App.Database.GetCars().Where(Car => string.IsNullOrEmpty(text) || Car.Brand.Contains(text) || Car.Model.Contains(text)).ToList();
             ListView.SelectedItem = null;
+            lastSearched = text;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
