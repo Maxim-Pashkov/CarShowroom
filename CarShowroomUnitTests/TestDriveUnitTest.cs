@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CarShowroom;
 
-namespace CarShowroomUnitTests
+namespace CarShowroom.UnitTests
 {
     [TestClass]
     public class TestDriveUnitTest
