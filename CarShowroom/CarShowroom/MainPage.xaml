@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ScrollView>
+    <ScrollView AutomationId="TestDrivePageContainer">
         <StackLayout>
             <Label Text="Сведения о записи" StyleClass="container"/>
             

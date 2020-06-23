@@ -7,7 +7,7 @@
     <ContentPage.Resources>
         <StyleSheet Source="/styles.css" />
     </ContentPage.Resources>
-    <StackLayout>
+    <StackLayout AutomationId="SearchPageContainer">
         <local:SearchView StyleClass="container" Search="SearchView_Search"/>
         <ListView x:Name="ListView" HasUnevenRows="True" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>

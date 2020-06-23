@@ -51,8 +51,8 @@
                     </ListView>
                 </StackLayout>
                 <StackLayout>
-                    <Button Text="Список автомобилей" Clicked="Button_Clicked_1" StyleClass="landing-button"/>
-                    <Button Text="Запись на тест драйв" Clicked="Button_Clicked_2" StyleClass="landing-button"/>
+                    <Button Text="Список автомобилей" Clicked="Button_Clicked_1" StyleClass="landing-button" AutomationId="ButtonGoToSearchPage"/>
+                    <Button Text="Запись на тест-драйв" Clicked="Button_Clicked_2" StyleClass="landing-button" AutomationId="ButtonGoToTestDrivePage"/>
                 </StackLayout>
             </StackLayout>            
         </ScrollView>
