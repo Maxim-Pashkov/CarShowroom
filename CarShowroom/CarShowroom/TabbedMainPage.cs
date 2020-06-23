@@ -11,10 +11,11 @@ namespace CarShowroom
 	{
 		public TabbedMainPage ()
 		{
-            Title = "Автосалон";
+            Title = "Автоцентр «АстраАвто»";
 
             Children.Add(new SearchPage());
-            Children.Add(new MainPage());           
+            Children.Add(new MainPage());
+            Children.Add(new AboutUsPage());
 		}
 	}
 }

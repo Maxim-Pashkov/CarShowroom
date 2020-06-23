@@ -19,8 +19,14 @@ namespace CarShowroom
 		{
             lastSearched = string.Empty;
             BindingContext = this;
-			InitializeComponent ();            
-		}
+			InitializeComponent ();
+
+            MessagingCenter.Subscribe<Page>(this, "GoToSearchPage", (source) =>
+            {
+                TabbedPage tb = (TabbedPage)Parent;
+                tb.CurrentPage = tb.Children.First(page => page == this);
+            });
+        }
 
         protected override void OnAppearing()
         {

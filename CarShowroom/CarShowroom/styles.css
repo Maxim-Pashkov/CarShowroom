@@ -32,3 +32,25 @@ button {
 .label-big {
 	font-style: bold;
 }
+
+.landing-paragraph {
+	font-size: 16;
+}
+
+.landing-headline {
+	font-size: 16;
+	font-style: bold;
+	text-align: center;
+}
+
+.landing-button-call {
+	height: 40;
+	color: white;
+	background-color: #36c900;
+	font-size: 11;
+}
+
+.landing-button {
+	color: white;
+	background-color: #2746f5;
+}
