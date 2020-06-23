@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\63254.pv6zoo.1280.jpg" />
     <None Remove="images\daewoo-matiz.jpg" />
     <None Remove="images\daewoo_nexia.jpg" />
     <None Remove="images\Granta.png" />
@@ -18,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="images\63254.pv6zoo.1280.jpg" />
     <EmbeddedResource Include="images\daewoo-matiz.jpg" />
     <EmbeddedResource Include="images\daewoo_nexia.jpg" />
     <EmbeddedResource Include="images\Granta.png" />
@@ -31,6 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AboutUsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="ListViewCarTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarShowroom.AboutUsPage"
+             Title="О компании">
+    <ContentPage.Resources>
+        <StyleSheet Source="/styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image x:Name="Image"/>
+                <StackLayout StyleClass="container">
+                    <Label StyleClass="landing-headline" Text="О нас"/>
+                    <Label StyleClass="landing-paragraph">
+                        <Label.Text>
+                            Автоцентр "АстраАвто" начал свою деятельность в 2004 году и успешно развивается по настоящее время.
+                        </Label.Text>
+                    </Label>
+                    <Label StyleClass="landing-paragraph">
+                        <Label.Text>
+                            Автоцентр является официальным дилером LADA, VAZ, DAEWOO и гарантирует высокое качество оказываемых услуг. Огромный выбор автомобилей от седана до внедорожника, от компактных девичьих авто до больших семейных 7-местных, от эконом до бизнес-класса, дает возможность выбрать и приобрести автомобиль каждому.
+                        </Label.Text>
+                    </Label>
+                    <Label StyleClass="landing-paragraph">
+                        <Label.Text>
+                            Доступны услуги Trade-in, оценки, выкупа, комисси, лизинга, кредитования и страхования. Надежные страховые, банковские партнеры предоставляют широкий спектр услуг, что позволяет подобрать индивидуальные условия, удобные каждому клиенту.
+                        </Label.Text>
+                    </Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label StyleClass="landing-headline" Text="Наши салоны" />
+                    <ListView RowHeight="60" HeightRequest="190" SelectionMode="None">
+                        <ListView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>г.&#160;Астрахань, ул.&#160;Адмиралтейская&#160;28</x:String>
+                                <x:String>г.&#160;Астрахань, ул.&#160;Адмирала Нахимова&#160;55</x:String>
+                                <x:String>г.&#160;Астрахань, ул.&#160;Савушкина&#160;3</x:String>
+                            </x:Array>
+                        </ListView.ItemsSource>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" StyleClass="container-narrow">
+                                        <Label Text="{Binding .}" StyleClass="landing-paragraph" VerticalTextAlignment="Center"/>
+                                        <Button StyleClass="landing-button-call" VerticalOptions="Center" Text="Позвонить" Clicked="Button_Clicked" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="Список автомобилей" Clicked="Button_Clicked_1" StyleClass="landing-button"/>
+                    <Button Text="Запись на тест драйв" Clicked="Button_Clicked_2" StyleClass="landing-button"/>
+                </StackLayout>
+            </StackLayout>            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

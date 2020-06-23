@@ -38,6 +38,12 @@ namespace CarShowroom
                     ListView.SelectedItem = selectedCar;
                 }                
             });
+
+            MessagingCenter.Subscribe<Page>(this, "GoToTestDrivePage", (source) =>
+            {
+                TabbedPage tb = (TabbedPage)Parent;
+                tb.CurrentPage = tb.Children.First(page => page == this);
+            });
         }
 
         protected override void OnAppearing()
