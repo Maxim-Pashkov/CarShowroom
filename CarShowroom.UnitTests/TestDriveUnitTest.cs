@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using CarShowroom;
 
 namespace CarShowroom.UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class TestDriveUnitTest
     {
         CarShowroomRepositoryMock Database;
@@ -14,7 +14,7 @@ namespace CarShowroom.UnitTests
             Database = new CarShowroomRepositoryMock();
         }
 
-        [TestMethod]
+        [Test]
         public void TestFullNameByFirstName()
         {
             TestDrive td = new TestDrive(Database);
@@ -24,7 +24,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.FullName, "1");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFullNameByFirstNameAndSecondName()
         {
             TestDrive td = new TestDrive(Database);
@@ -35,7 +35,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.FullName, "2 1");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFullNameByFirstNameAndThirdName()
         {
             TestDrive td = new TestDrive(Database);
@@ -46,7 +46,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.FullName, "1 3");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFullNameBySecondNameAndThirdName()
         {
             TestDrive td = new TestDrive(Database);
@@ -57,7 +57,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.FullName, "2 3");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFullNameByFirstNameAndSecondNameAndThirdName()
         {
             TestDrive td = new TestDrive(Database);
@@ -69,7 +69,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.FullName, "2 1 3");
         }
 
-        [TestMethod]
+        [Test]
         public void TestDateDefaultValue()
         {
             TestDrive td = new TestDrive(Database);
@@ -77,7 +77,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.Date, DateTime.Today);
         }
 
-        [TestMethod]
+        [Test]
         public void TestTimeDefaultValue()
         {
             TestDrive td = new TestDrive(Database);
@@ -85,7 +85,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.Time, new TimeSpan(12, 0, 0));
         }
 
-        [TestMethod]
+        [Test]
         public void TestDateTimeByDate()
         {
             TestDrive td = new TestDrive(Database);
@@ -95,7 +95,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.DateTime, new DateTime(2019, 12, 10, 12, 0, 0));
         }
 
-        [TestMethod]
+        [Test]
         public void TestDateTimeByTime()
         {
             TestDrive td = new TestDrive(Database);
@@ -105,7 +105,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.DateTime, DateTime.Today.AddHours(10).AddMinutes(10));
         }
 
-        [TestMethod]
+        [Test]
         public void TestDateTimeByDateAndTime()
         {
             TestDrive td = new TestDrive(Database);
@@ -117,7 +117,7 @@ namespace CarShowroom.UnitTests
             Assert.AreEqual(td.DateTime, new DateTime(2019, 12, 10, 10, 10, 0));
         }
 
-        [TestMethod]
+        [Test]
         public void TestDateTimeByTimeAndDate()
         {
             TestDrive td = new TestDrive(Database);
