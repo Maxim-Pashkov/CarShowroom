@@ -8,8 +8,8 @@
     <ProjectGuid>{53233F2A-D389-4527-85FC-279F7F95A82D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarShowroomUnitTests</RootNamespace>
-    <AssemblyName>CarShowroomUnitTests</AssemblyName>
+    <RootNamespace>CarShowroom.UnitTests</RootNamespace>
+    <AssemblyName>CarShowroom.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
