@@ -9,12 +9,12 @@ namespace CarShowroom.UITests
 {
     [TestFixture(Platform.Android)]
     //[TestFixture(Platform.iOS)]
-    public class Tests
+    public class AboutUsPageTest
     {
         IApp app;
         Platform platform;
 
-        public Tests(Platform platform)
+        public AboutUsPageTest(Platform platform)
         {
             this.platform = platform;
         }
@@ -23,9 +23,11 @@ namespace CarShowroom.UITests
         public void BeforeEachTest()
         {
             app = AppInitializer.StartApp(platform);
+
+            app.Tap(c => c.Marked("О компании").Index(0));
         }
 
-        //[Test]
+        [Test]
         public void WelcomeTextIsDisplayed()
         {
             app.Repl();
@@ -36,10 +38,8 @@ namespace CarShowroom.UITests
         }
 
         [Test]
-        public void GoToSearchPageFromAboutUs()
-        {
-            app.Tap(c => c.Marked("О компании").Index(0));
-
+        public void GoToSearchPage()
+        {          
             Func<AppQuery, AppQuery> ButtonGoToSearchPage = c => c.Marked("ButtonGoToSearchPage").Index(0);
             app.ScrollDownTo(ButtonGoToSearchPage);
             app.Tap(ButtonGoToSearchPage);
@@ -48,10 +48,8 @@ namespace CarShowroom.UITests
         }
 
         [Test]
-        public void GoToTestDrivePageFromAboutUs()
+        public void GoToTestDrivePage()
         {
-            app.Tap(c => c.Marked("О компании").Index(0));
-
             Func<AppQuery, AppQuery> ButtonGoToTestDrivePage = c => c.Marked("ButtonGoToTestDrivePage").Index(0);
             app.ScrollDownTo(ButtonGoToTestDrivePage);
             app.Tap(ButtonGoToTestDrivePage);
