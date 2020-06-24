@@ -35,7 +35,7 @@ if [ "$APPCENTER_XAMARIN_CONFIGURATION" == "Debug" ];then
 
     APKFile=`find "$APPCENTER_SOURCE_DIRECTORY" -name *.apk | head -1`
 
-    npm install -g appcenter-cli@2.6.0
+    npm install -g appcenter-cli@1.2.2
 
     appcenter login --token token
 
