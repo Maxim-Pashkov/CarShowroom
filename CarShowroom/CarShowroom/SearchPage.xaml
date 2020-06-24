@@ -13,7 +13,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
+                        <StackLayout AutomationId="CarItem">
                             <StackLayout StyleClass="container-narrow" Padding="0, 10">
                                 <Image
                                     Source="{Binding PhotoSource}"   
@@ -30,6 +30,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Text="Записаться на тест-драйв" IsEnabled="{Binding CarIsSelected}" Clicked="Button_Clicked"/>
+        <Button Text="Записаться на тест-драйв" IsEnabled="{Binding CarIsSelected}" Clicked="Button_Clicked" AutomationId="ButtonGoToTestDrivePage"/>
     </StackLayout>
 </ContentPage>

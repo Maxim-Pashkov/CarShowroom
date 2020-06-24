@@ -25,7 +25,11 @@
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>            
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Салон" VerticalTextAlignment="Center"/>
-                <Picker HorizontalOptions="FillAndExpand" VerticalOptions="Center" SelectedItem="{Binding TestDrive.Showroom}" >
+                <Picker 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    SelectedItem="{Binding TestDrive.Showroom}"
+                    AutomationId="PickerShowroom">
                     <Picker.Items>
                         <x:String>г. Астрахань, ул. Адмиралтейская 28</x:String>
                         <x:String>г. Астрахань, ул. Адмирала Нахимова 55</x:String>
@@ -57,7 +61,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                          <StackLayout>
+                          <StackLayout AutomationId="CarItem">
                             <StackLayout Orientation="Horizontal" StyleClass="container-narrow">
                               <Image
                                       Source="{Binding PhotoSource}"
@@ -83,13 +87,15 @@
                     VerticalOptions="Center" 
                     MinimumDate="{x:Static sys:DateTime.Today}"
                     Date="{Binding TestDrive.Date}"
+                    AutomationId="DatePickerDate"
                     />
 
                 <Label Text="Время" VerticalTextAlignment="Center" />
                 <TimePicker 
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="Center" 
-                    Time="{Binding TestDrive.Time}"/>
+                    Time="{Binding TestDrive.Time}"
+                    AutomationId="TimePickerTime"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
@@ -98,25 +104,46 @@
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Фамилия" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите фамилию" Text="{Binding TestDrive.SecondName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
+                <Entry 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    Placeholder="Введите фамилию" 
+                    Text="{Binding TestDrive.SecondName}" 
+                    Keyboard="Chat" 
+                    Style="{StaticResource Key=EntryFocused}"
+                    AutomationId="EntrySecondName"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Имя" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите имя" Text="{Binding TestDrive.FirstName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
+                <Entry 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    Placeholder="Введите имя" 
+                    Text="{Binding TestDrive.FirstName}" 
+                    Keyboard="Chat" 
+                    Style="{StaticResource Key=EntryFocused}"
+                    AutomationId="EntryFirstName"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Отчество" VerticalTextAlignment="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" VerticalOptions="Center" Placeholder="Введите отчество" Text="{Binding TestDrive.ThirdName}" Keyboard="Chat" Style="{StaticResource Key=EntryFocused}"/>
+                <Entry 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="Center" 
+                    Placeholder="Введите отчество" 
+                    Text="{Binding TestDrive.ThirdName}" 
+                    Keyboard="Chat" 
+                    Style="{StaticResource Key=EntryFocused}"
+                    AutomationId="EntryThirdName"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
             <StackLayout Orientation="Horizontal" StyleClass="container">
                 <Label Text="Согласен на обработку персональных данных" VerticalTextAlignment="Center"/>
-                <Switch IsToggled="{Binding TestDrive.Accepted}" x:Name="SwitchAccept"/>
+                <Switch IsToggled="{Binding TestDrive.Accepted}" AutomationId="SwitchAccept" x:Name="SwitchAccept"/>
             </StackLayout>
             
             <BoxView HorizontalOptions="FillAndExpand" StyleClass="hr"/>
@@ -127,6 +154,7 @@
                 Clicked="Button_Clicked"
                 BindingContext="{x:Reference SwitchAccept}"
                 IsEnabled="{Binding IsToggled}"
+                AutomationId="ButtonSubmitTestDrive"
             />
         </StackLayout>
     </ScrollView>

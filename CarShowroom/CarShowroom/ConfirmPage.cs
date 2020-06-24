@@ -26,13 +26,15 @@ namespace CarShowroom
                 VerticalOptions = LayoutOptions.EndAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Text = "Подтвердить",
+                AutomationId = "ButtonConfirmSubmit"
             };
             button.Clicked += Button_Clicked;
 
             List<string> containerStyle = new List<string> { "container" };
             List<string> labelBigStyle = new List<string> { "label-big" };
 
-            Content = new StackLayout {                
+            Content = new StackLayout {       
+                AutomationId = "ConfirmPageContainer",
                 Children = {
                     new StackLayout
                     {

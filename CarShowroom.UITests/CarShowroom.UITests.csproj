@@ -35,6 +35,8 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestDrivePageTest.cs" />
+    <Compile Include="SearchPageTest.cs" />
     <Compile Include="AboutUsPageTest.cs" />
     <Compile Include="AppInitializer.cs" />
   </ItemGroup>

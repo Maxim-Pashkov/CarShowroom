@@ -15,8 +15,14 @@ namespace CarShowroom
 
         public SearchView ()
 		{
-            Entry Entry = new Entry { Placeholder = "Введите текст", HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.End};
-            Button Button = new Button { Text = "Искать" };
+            Entry Entry = new Entry {
+                Placeholder = "Введите текст",
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.End,
+                AutomationId = "SearchEntry"
+            };
+
+            Button Button = new Button { Text = "Искать", AutomationId = "SearchButton" };
 
             Button.Clicked += (sender, e) => Search?.Invoke(Entry.Text); ;
 

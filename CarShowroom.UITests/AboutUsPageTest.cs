@@ -27,14 +27,10 @@ namespace CarShowroom.UITests
             app.Tap(c => c.Marked("О компании").Index(0));
         }
 
-        [Test]
-        public void WelcomeTextIsDisplayed()
+        //[Test]
+        public void Repl()
         {
             app.Repl();
-            /*AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
-            app.Screenshot("Welcome screen.");
-
-            Assert.IsTrue(results.Any());*/
         }
 
         [Test]
