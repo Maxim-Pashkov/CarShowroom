@@ -1,4 +1,6 @@
 ﻿#!/usr/bin/env bash
+echo "Post build file init"
+
 if [ "$APPCENTER_XAMARIN_CONFIGURATION" == "Debug" ];then
 
     echo "Post Build Script Started"
