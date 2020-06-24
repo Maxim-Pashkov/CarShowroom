@@ -11,9 +11,9 @@ namespace CarShowroom.UITests
             if (platform == Platform.Android)
             {
                 return ConfigureApp.Android                    
-                    .InstalledApp("com.companyname.CarShowroom.Android")
+                    //.InstalledApp("com.companyname.CarShowroom.Android")
                     .EnableLocalScreenshots()
-                    .DeviceSerial("MUENW19711001315")
+                    //.DeviceSerial("MUENW19711001315")
                     .StartApp();
             }
 
