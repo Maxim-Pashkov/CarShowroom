@@ -39,5 +39,5 @@ if [ "$APPCENTER_XAMARIN_CONFIGURATION" == "Debug" ];then
 
     appcenter login --token token
 
-    appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --app-path $APKFile --test-series "master" --locale "en_US" --build-dir $UITestBuildDir --uitest-tools-dir $TestCloudExeDirectory --async
+    appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --app-path $APKFile --test-series "master" --locale "ru_RU" --build-dir $UITestBuildDir --uitest-tools-dir $TestCloudExeDirectory --async
 fi
