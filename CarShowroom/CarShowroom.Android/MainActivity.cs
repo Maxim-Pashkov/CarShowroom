@@ -7,6 +7,11 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
+
 namespace CarShowroom.Droid
 {
     [Activity(Label = "CarShowroom", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -20,6 +25,9 @@ namespace CarShowroom.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            AppCenter.Start("d0ce2952-f5d1-47be-95cb-73887f79d6bd",
+                   typeof(Analytics), typeof(Crashes));
         }
     }
 }
