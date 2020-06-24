@@ -23,7 +23,7 @@ echo SolutionFile: $SolutionFile
 echo SolutionFileFolder: $SolutionFileFolder
 echo UITestProject: $UITestProject
 
-#msbuild "$UITestProject" /property:Configuration=$APPCENTER_XAMARIN_CONFIGURATION
+msbuild "$UITestProject" /property:Configuration=$APPCENTER_XAMARIN_CONFIGURATION
 
 UITestDLL=`find "$APPCENTER_SOURCE_DIRECTORY" -name "CarShowroom.UITests.dll" | grep bin | head -1` 
 echo UITestDLL: $UITestDLL
