@@ -2,9 +2,9 @@
 
 echo "Post Build Script Started"
 
-#uitest run
 set -e
 
+#uitest run
 ##
 # Environment variables required in App Center Build
 # https://docs.microsoft.com/en-us/appcenter/build/custom/variables/
@@ -14,23 +14,35 @@ set -e
 #
 ##
 
+SolutionFile=`find "$APPCENTER_SOURCE_DIRECTORY" -name CarShowroom.sln`
+SolutionFileFolder=`dirname $SolutionFile`
 
-if find $APPCENTER_SOURCE_DIRECTORY -name '*.UITests.csproj';
-then
-	echo "Building UI test projects:"
-	find $APPCENTER_SOURCE_DIRECTORY -name '*.UITests.csproj' -exec msbuild {} \;
-else
-	echo "Can't find UI test project"
-	exit 9999
-fi
-echo "Compiled projects to run UI tests:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '*.bin.*UITests.*\.dll' -exec echo {} \;
-echo "Running test in App Center Test"
-APPPATH=$APPCENTER_OUTPUT_DIRECTORY/*.apk
-BUILDDIR=$APPCENTER_SOURCE_DIRECTORY/*.UITests/bin/Debug/
-UITESTTOOL=$APPCENTER_SOURCE_DIRECTORY/packages/Xamarin.UITest.*/tools
-appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --test-series --test-series "master" --locale "ru_RU" --app-path $APPPATH --build-dir $BUILDDIR --async --uitest-tools-dir $UITESTTOOL --token $APPCENTER_TOKEN
+UITestProject=`find "$APPCENTER_SOURCE_DIRECTORY" -name CarShowroom.UITests.csproj`
 
+echo SolutionFile: $SolutionFile
+echo SolutionFileFolder: $SolutionFileFolder
+echo UITestProject: $UITestProject
+
+#msbuild "$UITestProject" /property:Configuration=$APPCENTER_XAMARIN_CONFIGURATION
+
+UITestDLL=`find "$APPCENTER_SOURCE_DIRECTORY" -name "CarShowroom.UITests.dll" | grep bin | head -1` 
+echo UITestDLL: $UITestDLL
+
+UITestBuildDir=`dirname $UITestDLL`
+echo UITestBuildDir: $UITestBuildDir
+
+UITestVersionNumber=`grep '[0-9]' $UITestProject | grep Xamarin.UITest|grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'`
+echo UITestVersionNumber: $UITestVersionNumber
+
+TestCloudExe=`find ~/.nuget | grep test-cloud.exe | grep $UITestVersionNumber | head -1`
+echo TestCloudExe: $TestCloudExe
+
+TestCloudExeDirectory=`dirname $TestCloudExe`
+echo TestCloudExeDirectory: $TestCloudExeDirectory
+
+APKFile=`find "$APPCENTER_SOURCE_DIRECTORY" -name *.apk | head -1`
+
+appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --test-series --test-series "master" --locale "ru_RU" --app-path $APKFile --build-dir $UITestBuildDir --async --uitest-tools-dir $TestCloudExeDirectory --token $APPCENTER_TOKEN
 echo "End UI tests"
 
 #unit tests run
