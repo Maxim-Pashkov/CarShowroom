@@ -42,7 +42,7 @@ echo TestCloudExeDirectory: $TestCloudExeDirectory
 
 APKFile=`find "$APPCENTER_SOURCE_DIRECTORY" -name *.apk | head -1`
 
-appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --test-series --test-series "master" --locale "ru_RU" --app-path $APKFile --build-dir $UITestBuildDir --async --uitest-tools-dir $TestCloudExeDirectory --token $APPCENTER_TOKEN
+appcenter test run uitest --app "maximpashkov/CarShowroom" --devices "maximpashkov/base" --test-series "master" --locale "ru_RU" --app-path $APKFile --build-dir $UITestBuildDir --async --uitest-tools-dir $TestCloudExeDirectory --token $APPCENTER_TOKEN
 
 echo "End UI tests"
 
