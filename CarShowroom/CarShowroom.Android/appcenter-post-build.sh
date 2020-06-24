@@ -64,7 +64,7 @@ echo "Compiled projects to run NUnit tests:"
 find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*UnitTest.*\.dll' -exec echo {} \;
 echo
 echo "Running NUnit tests:"
-find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*UnitTest.*\.dll' -exec nunit-console --list-extensions {} +
+find $APPCENTER_SOURCE_DIRECTORY -regex '.*bin.*UnitTest.*\.dll' -exec nunit3-console --list-extensions {} +
 echo
 echo "NUnit tests result:"
 pathOfTestResults=$(find $APPCENTER_SOURCE_DIRECTORY -name 'TestResult.xml')
