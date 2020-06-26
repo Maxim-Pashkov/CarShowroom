@@ -38,6 +38,8 @@ namespace CarShowroom.UITests
         {
             app.ScrollTo("ButtonSubmitTestDrive", "TestDrivePageContainer");
 
+            app.Screenshot("Scrolling to button");
+
             AppResult button = app.Query("ButtonSubmitTestDrive").First();
 
             Assert.IsFalse(button.Enabled);
@@ -48,7 +50,11 @@ namespace CarShowroom.UITests
         {
             app.ScrollTo("ButtonSubmitTestDrive", "TestDrivePageContainer");
 
-            app.Tap("SwitchAccept");           
+            app.Screenshot("Scrolling to button");
+
+            app.Tap("SwitchAccept");
+
+            app.Screenshot("Switch tap");
 
             AppResult button = app.Query("ButtonSubmitTestDrive").First();
 
@@ -60,7 +66,11 @@ namespace CarShowroom.UITests
         {
             app.ScrollTo("ButtonSubmitTestDrive", "TestDrivePageContainer");
 
+            app.Screenshot("Scrolling to button");
+
             app.Tap("SwitchAccept");
+
+            app.Screenshot("Switch tap");
 
             app.Tap("ButtonSubmitTestDrive");
 
@@ -74,11 +84,19 @@ namespace CarShowroom.UITests
         {
             app.ScrollTo("ButtonSubmitTestDrive", "TestDrivePageContainer");
 
+            app.Screenshot("Scrolling to button");
+
             app.Tap("SwitchAccept");
+
+            app.Screenshot("Switch tap");
 
             app.Tap("ButtonSubmitTestDrive");
 
+            app.Screenshot("Button submit was clicked");
+
             app.Tap("ButtonConfirmSubmit");
+
+            app.Screenshot("Button confirm was clicked");
 
             app.Tap("Ок");
 

@@ -38,6 +38,8 @@ namespace CarShowroom.UITests
         {          
             Func<AppQuery, AppQuery> ButtonGoToSearchPage = c => c.Marked("ButtonGoToSearchPage").Index(0);
             app.ScrollDownTo(ButtonGoToSearchPage);
+            app.Screenshot("Scrolling to button");
+
             app.Tap(ButtonGoToSearchPage);
 
             Assert.IsTrue(app.Query(c => c.Marked("SearchPageContainer")).Any());
@@ -48,6 +50,8 @@ namespace CarShowroom.UITests
         {
             Func<AppQuery, AppQuery> ButtonGoToTestDrivePage = c => c.Marked("ButtonGoToTestDrivePage").Index(0);
             app.ScrollDownTo(ButtonGoToTestDrivePage);
+            app.Screenshot("Scrolling to button");
+
             app.Tap(ButtonGoToTestDrivePage);
 
             Assert.IsTrue(app.Query(c => c.Marked("TestDrivePageContainer")).Any());

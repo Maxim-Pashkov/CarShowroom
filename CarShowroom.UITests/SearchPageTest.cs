@@ -47,8 +47,10 @@ namespace CarShowroom.UITests
             Func<AppQuery, AppQuery> CarItem = c => c.Marked("CarItem").Index(0);
 
             app.ScrollDownTo(CarItem);
+            app.Screenshot("Scrolling to car row");
 
             app.Tap(CarItem);
+            app.Screenshot("Car item click");
 
             AppResult[] button = app.Query(ButtonGoToTestDrivePage);
 
@@ -61,8 +63,10 @@ namespace CarShowroom.UITests
             Func<AppQuery, AppQuery> CarItem = c => c.Marked("CarItem").Index(0);
 
             app.ScrollDownTo(CarItem);
+            app.Screenshot("Scrolling to car row");
 
             app.Tap(CarItem);
+            app.Screenshot("Car item click");
 
             app.Tap(ButtonGoToTestDrivePage);
 
