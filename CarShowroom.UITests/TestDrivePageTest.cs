@@ -36,7 +36,7 @@ namespace CarShowroom.UITests
         [Test]
         public void ButtonSubmitTestDriveIsDisabled()
         {
-            app.ScrollDownTo("ButtonSubmitTestDrive");
+            app.ScrollTo("ButtonSubmitTestDrive", "TestDrivePageContainer");
 
             AppResult button = app.Query("ButtonSubmitTestDrive").First();
 
