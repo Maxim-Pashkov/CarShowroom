@@ -22,7 +22,6 @@ namespace CarShowroom.UnitTests
             td.FirstName = "1";
 
             Assert.AreEqual(td.FullName, "1");
-            Assert.IsTrue(false);
         }
 
         [Test]
