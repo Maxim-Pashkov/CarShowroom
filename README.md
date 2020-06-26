@@ -15,10 +15,10 @@ git clone https://github.com/Maxim-Pashkov/CarShowroom.git
 * NUnit 2.6.4
 
 ## We use:
-[Xamarin](https://dotnet.microsoft.com/apps/xamarin): for create Android app
-[NUnit](https://nunit.org/): for create Unit and UI tests
-[Xamarin.UITest](https://docs.microsoft.com/en-us/appcenter/test-cloud/uitest/): for create UI tests
-[App Center](https://appcenter.ms/): CI
+* [Xamarin](https://dotnet.microsoft.com/apps/xamarin): for create Android app
+* [NUnit](https://nunit.org/): for create Unit and UI tests
+* [Xamarin.UITest](https://docs.microsoft.com/en-us/appcenter/test-cloud/uitest/): for create UI tests
+* [App Center](https://appcenter.ms/): CI
 
 
 Found a mistake? [Write to us](https://github.com/Maxim-Pashkov/CarShowroom/issues).
